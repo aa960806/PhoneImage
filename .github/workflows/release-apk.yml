@@ -9,33 +9,16 @@ permissions:
   contents: write
 
 jobs:
-  build:
-    name: Build and publish APK
+  publish:
+    name: Publish APK
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "17"
-
-      - name: Make Gradle executable
-        run: chmod +x ./gradlew
-
-      - name: Prepare CI Gradle settings
-        run: |
-          echo "sdk.dir=$ANDROID_HOME" > local.properties
-          sed -i '/^org.gradle.java.home=/d' gradle.properties
-
-      - name: Build debug APK
-        run: ./gradlew assembleDebug
-
-      - name: Rename APK
-        run: cp app/build/outputs/apk/debug/app-debug.apk PhoneImage-${{ github.ref_name }}.apk
+      - name: Prepare APK
+        run: cp release-assets/PhoneImage-${{ github.ref_name }}.apk PhoneImage-${{ github.ref_name }}.apk
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
