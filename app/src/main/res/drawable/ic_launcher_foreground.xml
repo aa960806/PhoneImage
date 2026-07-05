@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lumina 自适应图标前景层：白色四角星（sparkle / 灵感之光）。
+  透明背景，图形居中于中心安全区（108 画布中心约 54,54，主体控制在 24~82 范围内，
+  远离四周会被裁切的区域），任何启动器形状下都不会被裁掉。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 主四角星：中心 (52,56)，四个尖角向外，边缘用曲线内凹形成星芒 -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M52,28
+            C53.2,42 56,48.8 70,50
+            C56,51.2 53.2,58 52,72
+            C50.8,58 48,51.2 34,50
+            C48,48.8 50.8,42 52,28 Z" />
+    <!-- 右上角小星点缀：中心 (80,33)，营造闪光层次 -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M80,24
+            C80.6,30 82,32.4 88,33
+            C82,33.6 80.6,36 80,42
+            C79.4,36 78,33.6 72,33
+            C78,32.4 79.4,30 80,24 Z" />
+</vector>
