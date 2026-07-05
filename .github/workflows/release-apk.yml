@@ -26,6 +26,11 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
+      - name: Prepare CI Gradle settings
+        run: |
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          sed -i '/^org.gradle.java.home=/d' gradle.properties
+
       - name: Build debug APK
         run: ./gradlew assembleDebug
 
